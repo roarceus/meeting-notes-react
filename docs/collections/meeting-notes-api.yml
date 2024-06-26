@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Meeting Notes API
+  description: REST API for managing meeting notes
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /meeting-notes:
+    get:
+      summary: Get all meeting notes
+      responses:
+        '200':
+          description: A list of meeting notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MeetingNote'
+    post:
+      summary: Create a new meeting note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingNoteInput'
+      responses:
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingNote'
+  /meeting-notes/{id}:
+    put:
+      summary: Update a meeting note
+      parameters:
+        - name: id
+          in: path
+          description: ID of the meeting note to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingNoteInput'
+      responses:
+        '200':
+          description: Successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingNote'
+    delete:
+      summary: Delete a meeting note
+      parameters:
+        - name: id
+          in: path
+          description: ID of the meeting note to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+components:
+  schemas:
+    MeetingNote:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        actionItems:
+          type: array
+          items:
+            type: string
+        createdDate:
+          type: string
+          format: date-time
+    MeetingNoteInput:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        actionItems:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+        - content

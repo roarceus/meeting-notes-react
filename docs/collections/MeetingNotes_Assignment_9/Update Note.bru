@@ -1,0 +1,24 @@
+meta {
+  name: Update Note
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/meeting-notes/66071dc215041771816a8aa5
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "hi",
+    "content": "hola",
+    "actionItems": [
+      "eggs",
+      "milk"
+    ],
+    "createdDate": "2030-12-12T10:30:00.000Z"
+  }
+  
+}

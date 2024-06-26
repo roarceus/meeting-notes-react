@@ -1,0 +1,17 @@
+meta {
+  name: Filter Notes
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/meeting-notes/filter?endDate=2027-03-31T23:59:59.999Z
+  body: none
+  auth: none
+}
+
+query {
+  endDate: 2027-03-31T23:59:59.999Z
+  ~keywords: lol
+  ~startDate: 2024-02-01T00:00:00.000Z
+}

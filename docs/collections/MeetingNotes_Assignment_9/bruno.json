@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "MeetingNotes_Assignment_9",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
